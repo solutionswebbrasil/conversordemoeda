@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet">
+    <title>Conversor de Moeda</title>
+</head>
+
+<body>
+    <section class="left-section">
+        <video autoplay muted loop id="bg-video">
+            <source src="./assets/bk.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+    </section>
+    <section class="right-section">
+        <main>
+            <!-- Letreiro com valores da bolsa -->
+            <div class="ticker">
+                <div class="ticker-content" id="ticker-content">
+                    <!-- Conteúdo do letreiro será atualizado via JavaScript -->
+                </div>
+            </div>
+
+            <label>
+                Converter <b>de</b>
+                <select class="currency-from">
+                    <!-- Opções dinâmicas serão carregadas pelo JavaScript -->
+                </select>
+            </label>
+
+            <label>
+                Converter <b>para</b>
+                <select class="currency-to" disabled>
+                    <option value="BRL" data-symbol="R$" data-icon="br" selected>Real Brasileiro</option>
+                </select>
+            </label>
+
+            <label>
+                Valor
+                <input class="input-currency" placeholder="0,00">
+            </label>
+
+            <button class="convert">Converter</button>
+            <section class="conversion-section">
+                <div class="currency-result from">
+                    <span class="flag-icon"></span>
+                    <p class="currency-from-name">Real</p>
+                    <p class="currency-from-amount">R$ 0,00</p>
+                </div>
+
+                <!-- Seta como imagem -->
+                <img src="./assets/seta.png" alt="Seta" class="seta" id="seta-converter">
+
+                <div class="currency-result to">
+                    <span class="flag-icon"></span>
+                    <p class="currency-to-name">Dólar</p>
+                    <p class="currency-to-amount">US$ 0,00</p>
+                </div>
+            </section>
+
+            <!-- Calculadora Científica -->
+            <section class="calculator-section">
+                <input type="text" id="calc-display" disabled>
+                <div class="calculator-buttons">
+                    <button class="calc-btn" data-value="7">7</button>
+                    <button class="calc-btn" data-value="8">8</button>
+                    <button class="calc-btn" data-value="9">9</button>
+                    <button class="calc-btn" data-value="/" data-type="operator">/</button>
+                    
+                    <button class="calc-btn" data-value="4">4</button>
+                    <button class="calc-btn" data-value="5">5</button>
+                    <button class="calc-btn" data-value="6">6</button>
+                    <button class="calc-btn" data-value="*" data-type="operator">*</button>
+                    
+                    <button class="calc-btn" data-value="1">1</button>
+                    <button class="calc-btn" data-value="2">2</button>
+                    <button class="calc-btn" data-value="3">3</button>
+                    <button class="calc-btn" data-value="-" data-type="operator">-</button>
+                    
+                    <button class="calc-btn" data-value="0">0</button>
+                    <button class="calc-btn" data-value=".">.</button>
+                    <button class="calc-btn" data-value="=" class="equals">=</button>
+                    <button class="calc-btn" data-value="+" data-type="operator">+</button>
+                    
+                    <button class="calc-btn" data-value="C" class="clear">C</button>
+                    <button class="calc-btn" data-value="sqrt" data-type="function">√</button>
+                    <button class="calc-btn" data-value="pow" data-type="function">x²</button>
+                    <button class="calc-btn" data-value="1/x" data-type="function">1/x</button>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>by <a href="https://www.linkedin.com/in/clayton-dev/" target="_blank">Clayton Souza</a></p>
+        </footer>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="./scripts.js"></script>
+</body>
+
+</html>

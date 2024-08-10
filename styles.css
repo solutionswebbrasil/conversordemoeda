@@ -1,0 +1,319 @@
+/* Reset CSS para remover margens e paddings padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #2f2f2f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.left-section,
+.right-section {
+    flex: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-section {
+    position: relative;
+    overflow: hidden;
+}
+
+#bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    opacity: 0.1; /* Ajuste a opacidade conforme necessário */
+}
+
+.right-section {
+    background-color: #3a3a3a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    background-color: #444;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+    width: 100%;
+    text-align: center;
+    flex: 1; /* Faz o main ocupar o espaço disponível */
+}
+
+/* Estilo do letreiro */
+.ticker {
+    overflow: hidden;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    margin-bottom: 8px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.ticker-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: ticker-scroll 20s linear infinite;
+}
+
+@keyframes ticker-scroll {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+label {
+    display: block;
+    margin: 6px 0;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+label b {
+    font-weight: 700;
+}
+
+select,
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #313131;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+select:focus,
+input:focus {
+    border-color: #007bff;
+    background-color: #666;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.conversion-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.currency-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+    text-align: center;
+}
+
+.flag-icon {
+    font-size: 20px;
+    margin-bottom: 3px;
+}
+
+.conversion-section p {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+/* Estilo da seta */
+.seta {
+    width: 25px; /* Tamanho da seta */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.seta:hover {
+    transform: scale(1.1); /* Aumentar um pouco a seta quando o mouse passa por cima */
+}
+
+/* Animação de tremor */
+@keyframes tremor {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
+}
+
+.shake {
+    animation: tremor 0.3s linear;
+}
+
+/* Ajustar tamanho das bandeiras nas opções */
+.select2-container .flag-icon {
+    width: 14px;
+    height: 10px;
+    margin-right: 6px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Estilo do dropdown */
+.select2-container--default .select2-results__option {
+    background-color: #2e2d2d; /* Fundo do dropdown */
+    color: #fff; /* Texto do dropdown */
+    padding: 8px;
+}
+
+.select2-container--default .select2-results__option[aria-selected="true"] {
+    background-color: #007bff !important; /* Cor azul para item selecionado */
+    color: #fff !important; /* Texto branco para item selecionado */
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #007bff !important; /* Cor de destaque no dropdown */
+    color: #fff !important; /* Texto de destaque no dropdown */
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #313131; /* Fundo do select */
+    border-color: #383737; /* Borda do select */
+    color: #fff; /* Texto do select */
+}
+
+.select2-selection__rendered {
+    color: #fff; /* Texto do select quando selecionado */
+}
+
+/* Estilo da calculadora */
+.calculator-section {
+    background-color: #555;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#calc-display {
+    width: 100%;
+    padding: 6px;
+    border-radius: 5px;
+    margin-bottom: 6px;
+    background-color: #444;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    text-align: right;
+}
+
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+}
+
+.calc-btn {
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #666;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.calc-btn:hover {
+    background-color: #007bff;
+}
+
+/* Estilo do rodapé */
+footer {
+    background-color: #2f2f2f;
+    text-align: center;
+    width: 100%;
+    padding: 3px 0;
+    margin-top: auto; /* Garante que o rodapé fique no final */
+}
+
+footer p {
+    font-size: 10px;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+    .left-section {
+        display: none; /* Oculta a seção esquerda em dispositivos móveis */
+    }
+
+    .right-section {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    main {
+        max-width: 100%;
+        padding: 10px 5px;
+    }
+
+    #calc-display {
+        font-size: 12px; /* Reduz o tamanho do texto na calculadora */
+    }
+
+    .calc-btn {
+        padding: 6px; /* Diminui o padding dos botões da calculadora */
+        font-size: 10px;
+    }
+
+    .ticker {
+        font-size: 10px; /* Reduz o tamanho do texto do letreiro */
+        padding: 4px;
+    }
+
+    footer p {
+        font-size: 9px; /* Diminui o tamanho do texto do rodapé */
+    }
+}
