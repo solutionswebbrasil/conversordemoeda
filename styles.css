@@ -223,38 +223,42 @@ button:hover {
 .calculator-section {
     background-color: #555;
     border-radius: 10px;
-    padding: 5px;
+    padding: 10px; /* Aumenta o padding para melhor espaçamento */
     margin-top: 10px;
     width: 100%;
+    max-width: 300px; /* Limita a largura máxima no desktop */
+    height: auto; /* Permite ajuste automático da altura */
 }
 
 #calc-display {
     width: 100%;
-    padding: 6px;
+    padding: 5px; /* Aumenta o padding para melhorar a usabilidade */
     border-radius: 5px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     background-color: #444;
     color: #fff;
-    font-size: 14px;
+    font-size: 16px; /* Tamanho de fonte maior para melhor leitura */
     border: none;
     text-align: right;
+    height: 40px; /* Altura maior para display */
 }
 
 .calculator-buttons {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
+    grid-template-columns: repeat(4, 1fr); /* Mantém a estrutura de 4 colunas */
+    gap: 6px; /* Aumenta o gap entre os botões */
 }
 
 .calc-btn {
-    padding: 8px;
+    padding: 12px; /* Aumenta o padding para tornar os botões mais clicáveis */
     border-radius: 5px;
     background-color: #666;
     color: #fff;
-    font-size: 12px;
+    font-size: 14px; /* Tamanho de fonte maior para botões */
     cursor: pointer;
     transition: background-color 0.3s ease;
     border: none;
+    height: 50px; /* Altura ajustada para botões */
 }
 
 .calc-btn:hover {
@@ -300,16 +304,20 @@ footer a:hover {
     }
 
     #calc-display {
-        font-size: 12px; /* Reduz o tamanho do texto na calculadora */
+        font-size: 16px; /* Ajusta o tamanho do texto no display */
+        height: 40px; /* Ajusta a altura do display */
     }
 
     .calc-btn {
-        padding: 6px; /* Diminui o padding dos botões da calculadora */
-        font-size: 10px;
+        padding: 16px; /* Ajusta o padding dos botões no mobile */
+        font-size: 18px; /* Ajusta o tamanho da fonte dos botões */
+        height: 70px; /* Ajusta a altura dos botões */
     }
 
     .calculator-section {
-        width: 280px; /* Ajusta a largura da calculadora no mobile */
+        width: 100%;
+        max-width: 380px; /* Ajusta a largura máxima da calculadora no mobile */
+        padding: 45px; /* Aumenta o padding no mobile */
     }
 
     .ticker {
