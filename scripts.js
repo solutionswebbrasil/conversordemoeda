@@ -34,16 +34,21 @@ $(document).ready(function () {
         { "code": "DKK", "name": "Coroa Dinamarquesa", "country": "Dinamarca", "flag": "dk", "symbol": "kr" },
         { "code": "ILS", "name": "Novo Shekel Israelense", "country": "Israel", "flag": "il", "symbol": "₪" },
         { "code": "AED", "name": "Dirham dos Emirados", "country": "Emirados Árabes Unidos", "flag": "ae", "symbol": "د.إ" },
-        { "code": "SAR", "name": "Riyal Saudita", "country": "Arábia Saudita", "flag": "sa", "symbol": "ر.س" }
+        { "code": "SAR", "name": "Riyal Saudita", "country": "Arábia Saudita", "flag": "sa", "symbol": "ر.س" },
+        { "code": "BRL", "name": "Real Brasileiro", "country": "Brasil", "flag": "br", "symbol": "R$" } // Adicionado BRL
     ];
 
     function populateSelects() {
         currencyData.forEach(currency => {
             const option = `<option value="${currency.code}" data-symbol="${currency.symbol}" data-icon="${currency.flag}">${currency.name}</option>`;
-            $('.currency-from').append(option);
+            $('.currency-from, .currency-to').append(option);
         });
 
-        $('.currency-from').select2({
+        // Pre-selecionar a moeda USD na "currency-from" e BRL na "currency-to"
+        $('.currency-from').val('USD').trigger('change');
+        $('.currency-to').val('BRL').trigger('change');
+
+        $('.currency-from, .currency-to').select2({
             templateResult: formatOption,
             templateSelection: formatOption
         });
@@ -65,13 +70,13 @@ $(document).ready(function () {
 
     function convertValues() {
         const inputCurrencyValue = parseFloat(document.querySelector(".input-currency").value);
-        const currencyTo = "BRL";
+        const currencyTo = document.querySelector(".currency-to").value;
         const currencyFrom = document.querySelector(".currency-from").value;
-        const symbolTo = 'R$';
+        const symbolTo = $('.currency-to').find(':selected').data('symbol');
         const symbolFrom = $('.currency-from').find(':selected').data('symbol');
-        const nameTo = 'Real Brasileiro';
+        const nameTo = $('.currency-to').find(':selected').text();
         const nameFrom = $('.currency-from').find(':selected').text();
-        const flagTo = 'br';
+        const flagTo = $('.currency-to').find(':selected').data('icon');
         const flagFrom = $('.currency-from').find(':selected').data('icon');
 
         if (isNaN(inputCurrencyValue) || inputCurrencyValue <= 0) {
@@ -132,12 +137,23 @@ $(document).ready(function () {
             .then(data => {
                 const tickerContent = document.getElementById('ticker-content');
                 let tickerText = '';
-                data.forEach(stock => {
-                    const symbol = stock.symbol;
-                    const price = stock.price;
-                    tickerText += `${symbol}: $${parseFloat(price).toFixed(2)} | `;
-                });
-                tickerContent.textContent = tickerText;
+
+                // Verifique se data é um array e tem conteúdo
+                if (Array.isArray(data) && data.length > 0) {
+                    data.forEach(stock => {
+                        const symbol = stock.symbol;
+                        const price = stock.price;
+                        if (price) {
+                            tickerText += `${symbol}: $${parseFloat(price).toFixed(2)} | `;
+                        } else {
+                            console.error(`Dados não disponíveis para ${symbol}`);
+                        }
+                    });
+                } else {
+                    console.error('Nenhum dado financeiro recebido');
+                }
+
+                tickerContent.textContent = tickerText || 'Dados financeiros não disponíveis no momento';
             })
             .catch(error => {
                 console.error('Erro ao buscar dados financeiros:', error);

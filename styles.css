@@ -308,6 +308,10 @@ footer a:hover {
         font-size: 10px;
     }
 
+    .calculator-section {
+        width: 280px; /* Ajusta a largura da calculadora no mobile */
+    }
+
     .ticker {
         font-size: 10px; /* Reduz o tamanho do texto do letreiro */
         padding: 4px;
